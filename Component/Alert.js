@@ -8,8 +8,8 @@ import { IconWarning } from '../Definition/IconUsed';
 const Localisation = ({localisation = null}) => {
   const theme = useTheme();
   const taille = useWindowDimensions().width-30;
-  const debut = (new Date(localisation.alerts[0].start * 1000)).getDate() + "/" + ((new Date(localisation.alerts[0].start * 1000)).getMonth()+1) + "/" + (new Date(localisation.alerts[0].start * 1000)).getFullYear() + " " + (new Date(localisation.alerts[0].start * 1000)).getHours() + ":" + (new Date(localisation.alerts[0].start * 1000)).getMinutes();
-  const fin = (new Date(localisation.alerts[0].end * 1000)).getDate() + "/" + ((new Date(localisation.alerts[0].end * 1000)).getMonth()+1) + "/" + (new Date(localisation.alerts[0].end * 1000)).getFullYear() + " " + (new Date(localisation.alerts[0].end * 1000)).getHours() + ":" + (new Date(localisation.alerts[0].end * 1000)).getMinutes();
+  const debut = (new Date(localisation.alerts[0].start * 1000)).getDate() + "/" + ((new Date(localisation.alerts[0].start * 1000)).getMonth()+1) + "/" + (new Date(localisation.alerts[0].start * 1000)).getFullYear() + " " + (new Date(localisation.alerts[0].start * 1000)).getHours() + ":00";
+  const fin = (new Date(localisation.alerts[0].end * 1000)).getDate() + "/" + ((new Date(localisation.alerts[0].end * 1000)).getMonth()+1) + "/" + (new Date(localisation.alerts[0].end * 1000)).getFullYear() + " " + (new Date(localisation.alerts[0].end * 1000)).getHours() + ":00";
 
   return (
   <Layout style={[styles.metaContainer, {width: taille}]}>
