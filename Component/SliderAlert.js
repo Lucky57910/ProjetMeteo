@@ -13,7 +13,6 @@ import { reverseGeocoding, geocoding } from '../API/geocode';
 const SliderAlert = (favPlaces) => {
 
     const [places, setPlaces] = useState([]);
-    const [isRefreshing, setIsRefreshing] = useState(false);
     const [isError, setIsError] = useState(false);
     let id = 0;
     useEffect(() => {
@@ -21,7 +20,6 @@ const SliderAlert = (favPlaces) => {
     }, [favPlaces]);
 
     const refreshFavPlaces = async () => {
-        setIsRefreshing(true);
         setIsError(false);
         let places = [];
         try {
@@ -46,11 +44,9 @@ const SliderAlert = (favPlaces) => {
             };
             setPlaces(places);
         } catch (error) {
-            console.log(error)
             setIsError(true);
             setPlaces([]);
         }
-        setIsRefreshing(false);
     };
 
     const width = useWindowDimensions().width;

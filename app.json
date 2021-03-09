@@ -1,6 +1,6 @@
 {
   "expo": {
-    "name": "Meteo_Maxime",
+    "name": "Meteo(rite)",
     "slug": "Meteo_Maxime",
     "version": "1.0.0",
     "orientation": "portrait",
@@ -21,9 +21,10 @@
     },
     "android": {
       "adaptiveIcon": {
-        "foregroundImage": "./assets/adaptive-icon.png",
+        "foregroundImage": "./assets/Icone.png",
         "backgroundColor": "#FFFFFF"
-      }
+      },
+      "package": "com.saloumaxime.Meteo_Maxime"
     },
     "web": {
       "favicon": "./assets/favicon.png"

@@ -2,6 +2,8 @@ import React, { useState, useEffect } from 'react';
 import { Text, Input, Button, Layout } from '@ui-kitten/components';
 import { Platform, Alert, StyleSheet, Image, ImageBackground, View } from 'react-native';
 import * as Location from 'expo-location';
+import * as Notifications from 'expo-notifications'
+import * as Permissions from 'expo-permissions';
 
 import { IconeLocalisation, IconeSearch } from '../Definition/IconUsed';
 import Assets from '../Definition/Assets';
@@ -10,6 +12,33 @@ import SliderAlert from './SliderAlert';
 import { reverseGeocoding, geocoding } from '../API/geocode';
 
 const Recherche = ({ route, navigation }) => {
+    useEffect(() => {
+        getPushNotificationPermissions();
+    });
+
+    getPushNotificationPermissions = async () => {
+        const { status: existingStatus } = await Permissions.getAsync(Permissions.NOTIFICATIONS);
+        let finalStatus = existingStatus;
+
+        // only ask if permissions have not already been determined, because
+        // iOS won't necessarily prompt the user a second time.
+        if (existingStatus !== 'granted') {
+          // Android remote notification permissions are granted during the app
+          // install, so this will only ask on iOS
+          const { status } = await Permissions.askAsync(Permissions.NOTIFICATIONS);
+          finalStatus = status;
+        }
+
+        // Stop here if the user did not grant permissions
+        if (finalStatus !== 'granted') {
+          return;
+        }
+        console.log(finalStatus)
+
+        // Get the token that uniquely identifies this device
+        console.log("Notification Token: ", await Notifications.getExpoPushTokenAsync());
+    }
+
     let id = 0;
     let localite = [];
 
